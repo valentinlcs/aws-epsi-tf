@@ -118,7 +118,7 @@ resource "aws_key_pair" "deployer" {
 
 resource "aws_instance" "web" {
   ami = data.aws_ami.ubuntu.id
-  instance_type = "var.instance_type.default"
+  instance_type = var.instance_type
   subnet_id = aws_subnet.public-b.id
   associate_public_ip_address=true
   key_name = aws_key_pair.deployer.id
