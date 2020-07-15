@@ -1,4 +1,8 @@
 provider "aws" {
+[default]
+aws_access_key_id=ASIARPPII7GJ7VCT3R65
+aws_secret_access_key=N1LqZd5TP4XLSF9Q7eaCuUhFKKpAvCz+qttJYmpR
+aws_session_token=FwoGZXIvYXdzEA8aDOY/CbqrvHI6gRr4niLFAdQA/jN+A72GlBehSnbQnOEv4qZ1dvm2rtUWhlZQiEU8f/XuI0MCbsae02xXxcmH7/OOAnYWjqj4vdRZrmTBTIPNnAs/77KrU8zQCH4axLZeXXfw2rejKswxP501NjVkqsqr6qvYCHkEsZak5OrWac4D1McaDhkdZNQLvKAxHGzUzN8kBJpD5ZDy+O98t/l0fENtfZe3pEZd3ZElAEVcXJDDYRawRcA1Nb0UNl7dCMWTmwnFU6+ecm/FPeDMtnThPN4HK37gKK//u/gFMi0iTYEfoI6uqNA1IKgSodmFzlFhUbP+smpspZjB8ezVr2Id/9DGSl6JWF39k7Q=
   version = "~> 2.0"
   region  = "us-east-1"
 }
@@ -114,7 +118,7 @@ resource "aws_key_pair" "deployer" {
 
 resource "aws_instance" "web" {
   ami = data.aws_ami.ubuntu.id
-  instance_type = "var.instance_type"
+  instance_type = "var.instance_type.default"
   subnet_id = aws_subnet.public-b.id
   associate_public_ip_address=true
   key_name = aws_key_pair.deployer.id
